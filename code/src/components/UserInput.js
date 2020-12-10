@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { game } from "reducers/game";
-import styled from "styled-components/macro";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { game } from 'reducers/game';
+import styled from 'styled-components/macro';
 
-import { Button } from "lib/Button";
-import { getStartGame } from "../reducers/reusable";
-import { AnimationText } from "lib/AnimationText";
+import { Button } from 'lib/Button';
+import { getStartGame } from '../reducers/reusable';
+import { AnimationText } from 'lib/Animationtext';
 
 export const UserInput = () => {
-  const [name, setName] = useState("");
-  const username = useSelector(store => store.game.username);
+  const [name, setName] = useState('');
+  const username = useSelector((store) => store.game.username);
 
   const dispatch = useDispatch();
 
@@ -19,14 +19,14 @@ export const UserInput = () => {
     }
   }, [dispatch, username]);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(
       game.actions.addUserName({
-        username: name,
+        username: name
       })
     );
-    setName(""); // Clearing the input
+    setName(''); // Clearing the input
   };
 
   return (
@@ -38,7 +38,7 @@ export const UserInput = () => {
             type="text"
             placeholder="Enter your username"
             value={name}
-            onChange={event => setName(event.target.value)}
+            onChange={(event) => setName(event.target.value)}
           />
         </Label>
         <Button buttonDisabled={!name} buttonType="submit" text="Start Game" />
